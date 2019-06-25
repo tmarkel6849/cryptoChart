@@ -4,5 +4,24 @@ const path = require('path'),
 
 module.exports = {
   mode: 'development',
-
+  entry: SRC_DIR,
+  output: {
+    filename: 'bundle.js',
+    path: DIST_DIR
+  },
+  resolve: {
+    extensions: ['*', '.js', '.jsx']
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          plugins: ['transform-class-properties']
+        }
+      }
+    ]
+  }
 }
